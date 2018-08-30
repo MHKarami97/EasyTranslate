@@ -30,11 +30,26 @@ namespace EasyTranslate
 
                 foreach (var str in logFile)
                 {
-                    var mcol = Regex.Matches(str, @">\b(.+?)\b<");
+                    var oneDot = "";
+                    var threeDot = "";
+                    var myStr = str;
+
+                    if (str.Contains("..."))
+                    {
+                        threeDot = "...";
+                        myStr = str.Replace(" ...", "").Replace("...", "");
+                    }
+                    else if (str.Contains("."))
+                    {
+                        oneDot = ".";
+                        myStr = str.Replace(".", "").Replace(" .", "");
+                    }
+
+                    var mcol = Regex.Matches(myStr, @">\b(.+?)\b<");
 
                     foreach (Match m in mcol)
                     {
-                        list.Add(m.ToString().Replace("<", "").Replace(">", ""));
+                        list.Add(m.ToString().Replace("<", "").Replace(">", "") + threeDot + oneDot);
                     }
                 }
 
