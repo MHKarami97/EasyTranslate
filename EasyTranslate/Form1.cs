@@ -1,14 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EasyTranslate
@@ -18,6 +12,8 @@ namespace EasyTranslate
         public Form1()
         {
             InitializeComponent();
+
+            StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void btnGetStringClick(object sender, EventArgs e)
@@ -26,7 +22,7 @@ namespace EasyTranslate
             {
                 var list = new List<string>();
 
-                var logFile = File.ReadAllLines(@locationString.Text.Replace(@"\\", @"\"));
+                var logFile = File.ReadAllLines(locationString.Text.Replace(@"\\", @"\"));
 
                 foreach (var str in logFile)
                 {
@@ -67,8 +63,8 @@ namespace EasyTranslate
         {
             var list = new List<string>();
 
-            var logFirstFile = File.ReadAllLines(@locationString.Text.Replace(@"\\", @"\"));
-            var logFile = File.ReadAllLines(@changesText.Text.Replace(@"\\", @"\"));
+            var logFirstFile = File.ReadAllLines(locationString.Text.Replace(@"\\", @"\"));
+            var logFile = File.ReadAllLines(changesText.Text.Replace(@"\\", @"\"));
 
             var i = 0;
 
